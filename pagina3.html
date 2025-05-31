@@ -30,7 +30,8 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding: 10px 0;
+    padding: 10px 0 30px 0;
+    box-sizing: border-box;
   }
 
   /* Cortinas */
@@ -77,23 +78,28 @@
     user-select: none;
   }
 
-  /* Contenedor GIF para que se ajuste completo */
+  /* Contenedor GIF para que se ajuste completo y centrado */
   .gif-container {
     position: relative;
     width: 90vw;
     max-width: 450px;
+    height: auto;
     margin: 20px auto;
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(191, 0, 67, 0.7);
+    display: flex;
+    justify-content: center;
   }
   .gif-container img {
     width: 100%;
     height: auto;
-    display: block;
+    max-height: 60vh;
     border-radius: 20px;
+    object-fit: contain;
+    user-select: none;
   }
 
-  /* Botón más pequeño */
+  /* Botón más pequeño y centrado */
   .boton-siguiente {
     margin: 10px auto 40px auto;
     padding: 10px 36px;
@@ -109,6 +115,8 @@
     letter-spacing: 0.06em;
     transition: background-color 0.3s ease;
     display: none; /* oculto inicialmente */
+    max-width: 200px;
+    width: 90%;
   }
   .boton-siguiente.visible {
     display: block;
@@ -151,10 +159,15 @@
       width: 90vw;
       margin: 15px auto;
     }
+    .gif-container img {
+      max-height: 50vh;
+    }
     .boton-siguiente {
       font-size: 0.9rem;
       padding: 8px 28px;
       margin-bottom: 30px;
+      max-width: 180px;
+      width: 90%;
     }
     .light1 {
       width: 70px; height: 70px;
@@ -173,6 +186,7 @@
 <div class="cortina derecha"></div>
 
 <div class="texto-arriba">
+  <!-- Puedes poner texto aquí si quieres -->
 </div>
 
 <div class="gif-container" id="gifContainer">
@@ -194,7 +208,7 @@
 
     setTimeout(() => {
       document.getElementById('btnSiguiente').classList.add('visible');
-    }, 6000);
+    }, 3000);
   };
 
   function irAPagina4() {
