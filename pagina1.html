@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Página 1 - Cortinas con Imagen Grande</title>
+<title>Página 1 - Cortinas con Imagen Grande y Cortinas más angostas</title>
 <style>
   body, html {
     margin: 0; padding: 0;
@@ -27,8 +27,8 @@
 
   .pagina1-container {
     position: relative;
-    width: 98vw;         /* menos margen horizontal */
-    max-width: 500px;    /* un poco más ancho */
+    width: 90vw;
+    max-width: 500px;
     height: 75vh;
     max-height: 540px;
     background: rgba(255 255 255 / 0.95);
@@ -40,15 +40,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 5px;   /* menos padding horizontal */
+    padding: 10px 5px;
     margin-top: 10px;
   }
 
-  /* Cortinas */
+  /* Cortinas con ancho reducido a 40% para dejar margen */
   .cortina {
     position: absolute;
     top: 0;
-    width: 50%;
+    width: 40%;
     height: 100%;
     background: linear-gradient(135deg, #ff4a91, #ff86c6);
     box-shadow:
