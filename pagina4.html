@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Confirmación de Asistencia - Página 4</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins&display=swap');
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body, html {
+    margin: 0; padding: 0;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffcee8, #ffb3ca);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .container {
+    background: #fff0f6;
+    max-width: 400px;
+    width: 90vw;
+    border-radius: 25px;
+    padding: 40px 30px 35px;
+    box-shadow: 0 12px 40px rgba(255, 20, 80, 0.25);
+    text-align: center;
+    position: relative;
+  }
+
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #d70056;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+    text-shadow: 1px 1px 6px rgba(215, 0, 86, 0.4);
+  }
+
+  p {
+    font-size: 1.15rem;
+    color: #a13257;
+    margin-bottom: 35px;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  /* Grid dos columnas para iconos */
+  .icon-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 35px;
+    justify-items: center;
+  }
+
+  .icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+  }
+
+  .icon-button {
+    background: #d70056;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(215, 0, 86, 0.5);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    user-select: none;
+    animation: bounce 3s ease-in-out infinite;
+    border: none;
+  }
+  .icon-button:hover, .icon-button:focus {
+    background: #a7003f;
+    transform: scale(1.1);
+    outline: none;
+  }
+
+  .icon-button svg {
+    fill: white;
+    width: 38px;
+    height: 38px;
+    pointer-events: none;
+  }
+
+  .icon-label {
+    margin-top: 10px;
+    font-weight: 700;
+    color: #d70056;
+    font-size: 1rem;
+    user-select: none;
+    text-shadow: 0 0 3px rgba(215, 0, 86, 0.6);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Modal */
+  .modal-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  .modal-bg.active {
+    display: flex;
+  }
+
+  .modal-content {
+    background: #fff0f6;
+    padding: 25px 30px;
+    border-radius: 20px;
+    max-width: 320px;
+    width: 90vw;
+    box-shadow: 0 8px 30px rgba(215,0,86,0.5);
+    text-align: center;
+  }
+
+  .modal-content h3 {
+    margin-top: 0;
+    color: #d70056;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .modal-content label {
+    display: block;
+    font-weight: 600;
+    color: #a13257;
+    margin-bottom: 8px;
+  }
+
+  .modal-content input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    border: 2px solid #d70056;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  .modal-content input[type="text"]:focus {
+    border-color: #a7003f;
+  }
+
+  .modal-content button {
+    background: #d70056;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(215, 0, 86, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  .modal-content button:hover {
+    background-color: #a7003f;
+  }
+
+  /* Responsive móviles */
+  @media (max-width: 400px) {
+    .container {
+      padding: 30px 20px 35px;
+    }
+    h2 {
+      font-size: 1.6rem;
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+    .icon-button {
+      width: 40px;
+      height: 40px;
+      animation: bounce 2.5s ease-in-out infinite;
+    }
+    .icon-button svg {
+      width: 28px;
+      height: 28px;
+    }
+    .icon-label {
+      font-size: 0.85rem;
+      margin-top: 7px;
+    }
+    .icon-row {
+      gap: 20px 25px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container" role="main">
+  <h2>Confirma tu asistencia</h2>
+  <p>Presiona un ícono para comunicarte, agendar o ubicar el evento de los XV años de Karelis Yasmin</p>
+
+  <div class="icon-row">
+    <!-- WhatsApp -->
+    <div class="icon-wrapper">
+      <button class="icon-button" aria-label="Confirmar asistencia vía WhatsApp" id="btnWhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.52 3.48A11.932 11.932 0 0012 0C5.373 0 0 5.373 0 12a11.97 11.97 0 001.638 6.008L0 24l6.204-1.592A11.926 11.926 0 0012 24c6.627 0 12-5.373 12-12 0-3.208-1.252-6.215-3.48-8.52zm-8.203 16.485a8.256 8.256 0 01-4.47-1.28l-.321-.192-3.683.945.984-3.587-.209-.356a8.24 8.24 0 012.51-11.507 8.303 8.303 0 0111.446 2.657 8.245 8.245 0 01-2.12 11.812l-.071.056-3.847 2.243-.007-.005zm4.18-6.678c-.22-.11-1.3-.643-1.5-.717-.201-.074-.348-.11-.495.11-.148.22-.57.717-.7.864-.129.148-.258.166-.479.055-.22-.11-.928-.342-1.77-1.096-.654-.581-1.095-1.298-1.223-1.52-.129-.221-.014-.34.1-.45.103-.103.22-.27.33-.405.11-.134.146-.22.22-.367.074-.148.037-.277-.019-.386-.056-.11-.495-1.19-.678-1.62-.179-.426-.36-.368-.495-.375-.128-.007-.276-.009-.422-.009a1.07 1.07 0 00-.774.36 2.826 2.826 0 00-1.04 2.475c0 1.452.99 2.856 1.13 3.053.148.197 1.954 2.984 4.74 4.183a20.237 20.237 0 002.19 1.14c.291.132.58.113.796.069.243-.048.743-.304.95-.599.204-.297.287-.553.401-.763.112-.21.075-.386-.045-.54-.118-.15-.495-.78-.713-1.087z"/>
+        </svg>
+      </button>
+      <div class="icon-label">WhatsApp</div>
+    </div>
+
+    <!-- Calendario -->
+    <div class="icon-wrapper">
+      <button onclick="abrirCalendario()" class="icon-button" aria-label="Agregar evento al calendario" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.104 0-2 .896-2 2v12c0 1.104.896 2 2 2h14c1.104 0 2-.896 2-2V6c0-1.104-.896-2-2-2zM5 18V9h14v9H5zm7-7a2 2 0 110 4 2 2 0 010-4z"/>
+        </svg>
+      </button>
+      <div class="icon-label">Fecha</div>
+    </div>
+
+    <!-- Ubicación -->
+    <div class="icon-wrapper">
+      <a href="https://www.google.com/maps?q=Av+Paseo+de+la+Republica+Lima+Peru" target="_blank" rel="noopener" class="icon-button" aria-label="Abrir ubicación en Google Maps">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1114.5 9 2.5 2.5 0 0112 11.5z"/>
+        </svg>
+      </a>
+      <div class="icon-label">Ubicación</div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal WhatsApp -->
+<div class="modal-bg" id="modalWhatsApp" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+  <div class="modal-content">
+    <h3 id="modalTitle">Confirma tu asistencia</h3>
+    <p id="modalDesc">Ingresa tu nombre para enviar un mensaje personalizado a Karelis</p>
+    <label for="nombreInput">Tu nombre:</label>
+    <input type="text" id="nombreInput" name="nombreInput" placeholder="Ejemplo: Juan Pérez" aria-required="true" />
+    <button id="enviarBtn">Enviar mensaje</button>
+    <button id="cerrarBtn" style="margin-top:10px; background:#a7003f;">Cancelar</button>
+  </div>
+</div>
+
+<script>
+  const btnWhatsApp = document.getElementById('btnWhatsApp');
+  const modal = document.getElementById('modalWhatsApp');
+  const enviarBtn = document.getElementById('enviarBtn');
+  const cerrarBtn = document.getElementById('cerrarBtn');
+  const nombreInput = document.getElementById('nombreInput');
+
+  btnWhatsApp.addEventListener('click', () => {
+    modal.classList.add('active');
+    nombreInput.focus();
+  });
+
+  cerrarBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+    nombreInput.value = '';
+  });
+
+  enviarBtn.addEventListener('click', () => {
+    const nombre = nombreInput.value.trim();
+    if (nombre.length < 2) {
+      alert('Por favor, ingresa tu nombre completo.');
+      nombreInput.focus();
+      return;
+    }
+    const mensaje = `Hola Karelis, soy ${encodeURIComponent(nombre)} y confirmo mi asistencia a tu celebración de XV años. ¡Estoy muy emocionado de acompañarte!`;
+    const url = `https://wa.me/51917162645?text=${mensaje}`;
+    window.open(url, '_blank');
+    modal.classList.remove('active');
+    nombreInput.value = '';
+  });
+
+  // Cerrar modal con tecla ESC
+  window.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && modal.classList.contains('active')){
+      modal.classList.remove('active');
+      nombreInput.value = '';
+    }
+  });
+
+  function abrirCalendario() {
+    const title = encodeURIComponent("XV Años de Karelis Yasmin");
+    const details = encodeURIComponent("Ven a celebrar conmigo este día especial.");
+    const location = encodeURIComponent("Av Paseo de la República, Lima, Perú");
+    const startDate = "20250621T190000Z";
+    const endDate = "20250621T230000Z";
+
+    const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${startDate}/${endDate}`;
+    window.open(url, '_blank');
+  }
+</script>
+
+</body>
+</html>
