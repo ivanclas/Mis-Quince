@@ -57,8 +57,8 @@
   .icon-button {
     background: #d70056;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,28 +139,33 @@
   .modal-content textarea:focus {
     border-color: #a7003f;
   }
+  .modal-buttons {
+    display: flex;
+    flex-direction: column; /* vertical stack */
+    gap: 12px;              /* spacing between buttons */
+    align-items: center;    /* center horizontally */
+    margin-top: 10px;
+  }
   .modal-content button {
     background: #d70056;
     color: white;
     font-weight: 700;
     border: none;
-    border-radius: 25px;
-    padding: 9px 26px;
-    font-size: 1rem;
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-size: 0.85rem;
     cursor: pointer;
     box-shadow: 0 6px 20px rgba(215, 0, 86, 0.8);
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    transition: background-color 0.3s ease;
+    letter-spacing: 0.05em;
     user-select: none;
-    margin: 0 8px;
-    min-width: 110px;
+    width: 70%;
+    max-width: 220px;
+    text-align: center;
+    transition: background-color 0.3s ease;
   }
   .modal-content button:hover {
     background-color: #a7003f;
-  }
-  .modal-buttons {
-    text-align: center;
   }
   /* Comentarios lista */
   .comments-container {
@@ -287,7 +292,7 @@
     projectId: "login-de3fd",
     storageBucket: "login-de3fd.appspot.com",
     messagingSenderId: "1064113669692",
-    appId: "1:1064113669692:web:c45b68b5a8a519536f2539",
+    appId: "1:1064113669692:web:c45b68b5a519536f2539",
     measurementId: "G-TMWR9JNR18"
   };
   // Initialize Firebase
@@ -314,10 +319,12 @@
   btnWhatsApp.addEventListener('click', () => {
     modalWhatsApp.classList.add('active');
     nombreInput.focus();
+    history.pushState({modal: 'whatsapp'}, '', '#modalWhatsApp'); // Añadir estado al historial
   });
   cerrarBtn.addEventListener('click', () => {
     modalWhatsApp.classList.remove('active');
     nombreInput.value = '';
+    history.back(); // Regresar historial para evitar acumulación
   });
 
   // Enviar mensaje WhatsApp
@@ -333,17 +340,20 @@
     window.open(url, '_blank');
     modalWhatsApp.classList.remove('active');
     nombreInput.value = '';
+    history.back();
   });
 
   // Abrir y cerrar modal Comentario
   btnComentario.addEventListener('click', () => {
     modalComentario.classList.add('active');
     commentNameInput.focus();
+    history.pushState({modal: 'comentario'}, '', '#modalComentario'); // Añadir estado al historial
   });
   closeCommentBtn.addEventListener('click', () => {
     modalComentario.classList.remove('active');
     commentNameInput.value = '';
     commentTextInput.value = '';
+    history.back();
   });
 
   // Escapar HTML para mostrar seguro
@@ -394,20 +404,35 @@
     modalComentario.classList.remove('active');
     commentNameInput.value = '';
     commentTextInput.value = '';
+    history.back();
   });
 
-  // Cerrar modales con ESC
+  // Cerrar modales con ESC y manejar botón atrás
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       if (modalWhatsApp.classList.contains('active')) {
         modalWhatsApp.classList.remove('active');
         nombreInput.value = '';
+        history.back();
       }
       if (modalComentario.classList.contains('active')) {
         modalComentario.classList.remove('active');
         commentNameInput.value = '';
         commentTextInput.value = '';
+        history.back();
       }
+    }
+  });
+  window.addEventListener('popstate', (e) => {
+    // Si hay un modal abierto, cerrarlo en lugar de retroceder página
+    if (modalWhatsApp.classList.contains('active')) {
+      modalWhatsApp.classList.remove('active');
+      nombreInput.value = '';
+    }
+    if (modalComentario.classList.contains('active')) {
+      modalComentario.classList.remove('active');
+      commentNameInput.value = '';
+      commentTextInput.value = '';
     }
   });
 </script>
