@@ -3,21 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>¡Es Hoy! - Página 3 Ajustada</title>
+<title>Página 3 - Celebración con GIF y Scroll General</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap');
 
-  body, html {
+  html, body {
     margin: 0; padding: 0;
-    height: 100vh;
-    background: linear-gradient(135deg, #ffe1ec, #ffc7d3);
+    height: 100%;
     font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
+    background: linear-gradient(135deg, #ffe1ec, #ffc7d3);
+    overflow-y: auto;
+    scroll-behavior: smooth;
   }
 
   /* Scroll invisible */
@@ -27,6 +23,14 @@
   * {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;  /* IE 10+ */
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 10px 0;
   }
 
   /* Cortinas */
@@ -62,41 +66,36 @@
     to { transform: translateX(100%); }
   }
 
-  /* Contenedor del GIF */
-  .gif-container {
-    position: relative;
-    margin-top: 20px;
-    width: 85vw;
-    max-width: 400px;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(191, 0, 67, 0.7);
-    overflow: auto; /* permite scroll si necesario */
-    opacity: 0;
-    transition: opacity 1s ease 2.5s;
-  }
-  .gif-container.visible {
-    opacity: 1;
-  }
-  .gif-container img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
   /* Texto arriba */
   .texto-arriba {
     font-family: 'Playfair Display', serif;
     color: #bf0043;
     font-size: 2.2rem;
     font-weight: 700;
-    margin-top: 10px;
+    margin-top: 20px;
     text-shadow: 1px 1px 3px rgba(255 255 255 / 0.8);
     user-select: none;
   }
 
+  /* Contenedor GIF para que se ajuste completo */
+  .gif-container {
+    position: relative;
+    width: 90vw;
+    max-width: 450px;
+    margin: 20px auto;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(191, 0, 67, 0.7);
+  }
+  .gif-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+  }
+
   /* Botón más pequeño */
   .boton-siguiente {
-    margin: 20px auto 25px auto;
+    margin: 10px auto 40px auto;
     padding: 10px 36px;
     background-color: #bf0043;
     color: white;
@@ -145,15 +144,17 @@
   @media (max-width: 450px) {
     .texto-arriba {
       font-size: 1.8rem;
+      margin-top: 15px;
     }
     .gif-container {
-      max-width: 320px;
-      margin-top: 15px;
+      max-width: 350px;
       width: 90vw;
+      margin: 15px auto;
     }
     .boton-siguiente {
       font-size: 0.9rem;
       padding: 8px 28px;
+      margin-bottom: 30px;
     }
     .light1 {
       width: 70px; height: 70px;
