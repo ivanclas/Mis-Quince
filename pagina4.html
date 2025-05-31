@@ -51,7 +51,6 @@
     font-weight: 600;
   }
 
-  /* Grid dos columnas para iconos */
   .icon-row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -108,7 +107,6 @@
     50% { transform: translateY(-10px); }
   }
 
-  /* Modal */
   .modal-bg {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -181,7 +179,6 @@
     background-color: #a7003f;
   }
 
-  /* Responsive móviles */
   @media (max-width: 400px) {
     .container {
       padding: 30px 20px 35px;
@@ -231,17 +228,17 @@
 
     <!-- Calendario -->
     <div class="icon-wrapper">
-      <button onclick="abrirCalendario()" class="icon-button" aria-label="Agregar evento al calendario" type="button">
+      <a href="evento.ics" download class="icon-button" aria-label="Agregar evento al calendario">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.104 0-2 .896-2 2v12c0 1.104.896 2 2 2h14c1.104 0 2-.896 2-2V6c0-1.104-.896-2-2-2zM5 18V9h14v9H5zm7-7a2 2 0 110 4 2 2 0 010-4z"/>
         </svg>
-      </button>
+      </a>
       <div class="icon-label">Fecha</div>
     </div>
 
     <!-- Ubicación -->
     <div class="icon-wrapper">
-      <a href="https://www.google.com/maps?q=Av+Paseo+de+la+Republica+Lima+Peru" target="_blank" rel="noopener" class="icon-button" aria-label="Abrir ubicación en Google Maps">
+      <a href="https://maps.app.goo.gl/EWaJ8M1dvkAFMHu59" target="_blank" rel="noopener" class="icon-button" aria-label="Abrir ubicación en Google Maps">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1114.5 9 2.5 2.5 0 0112 11.5z"/>
         </svg>
@@ -288,30 +285,18 @@
       return;
     }
     const mensaje = `Hola Karelis, soy ${encodeURIComponent(nombre)} y confirmo mi asistencia a tu celebración de XV años. ¡Estoy muy emocionado de acompañarte!`;
-    const url = `https://wa.me/51917162645?text=${mensaje}`;
+    const url = `https://wa.me/51962429185?text=${mensaje}`;
     window.open(url, '_blank');
     modal.classList.remove('active');
     nombreInput.value = '';
   });
 
-  // Cerrar modal con tecla ESC
   window.addEventListener('keydown', (e) => {
     if(e.key === 'Escape' && modal.classList.contains('active')){
       modal.classList.remove('active');
       nombreInput.value = '';
     }
   });
-
-  function abrirCalendario() {
-    const title = encodeURIComponent("XV Años de Karelis Yasmin");
-    const details = encodeURIComponent("Ven a celebrar conmigo este día especial.");
-    const location = encodeURIComponent("Av Paseo de la República, Lima, Perú");
-    const startDate = "20250621T190000Z";
-    const endDate = "20250621T230000Z";
-
-    const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${startDate}/${endDate}`;
-    window.open(url, '_blank');
-  }
 </script>
 
 </body>
