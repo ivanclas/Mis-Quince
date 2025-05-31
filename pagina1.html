@@ -14,6 +14,7 @@
     justify-content: center;
     align-items: center;
     font-family: 'Poppins', sans-serif;
+    flex-direction: column;
   }
 
   body::before {
@@ -29,8 +30,8 @@
     position: relative;
     width: 90vw;
     max-width: 600px;
-    height: 80vh;
-    max-height: 600px;
+    height: 70vh; /* altura reducida */
+    max-height: 500px; /* altura máxima menor */
     background: rgba(255 255 255 / 0.9);
     box-shadow:
       0 10px 40px rgba(217, 79, 124, 0.3),
@@ -40,8 +41,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Sin padding para que GIF ocupe todo el espacio */
     padding: 0;
+    flex-grow: 1;
   }
 
   .cortina {
@@ -90,7 +91,6 @@
     to { transform: translateX(100%); }
   }
 
-  /* Contenedor del GIF */
   .contenido-pagina {
     opacity: 0;
     transition: opacity 1s ease 2s;
@@ -107,13 +107,39 @@
     opacity: 1;
   }
 
-  /* GIF grande y responsive */
   .contenido-pagina img {
-    width: 100%;
-    height: 100%;
+    width: 105%; /* un poco más grande que el contenedor */
+    height: 105%;
     border-radius: 0;
     box-shadow: none;
     object-fit: contain;
+  }
+
+  .boton-siguiente {
+    margin-top: 15px;
+    padding: 12px 40px;
+    background-color: #d93967;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 7px 20px rgba(217, 57, 103, 0.7);
+    transition: background-color 0.3s ease;
+    user-select: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    align-self: center;
+    display: none; /* oculto inicialmente */
+  }
+
+  .boton-siguiente.visible {
+    display: block;
+  }
+
+  .boton-siguiente:hover {
+    background-color: #b21648;
   }
 </style>
 </head>
@@ -128,23 +154,36 @@
   </div>
 </div>
 
+<button class="boton-siguiente" id="btnSiguiente" aria-label="Ir a la página 2" onclick="irAPagina2()">Siguiente</button>
+
 <script>
+  const gif = document.getElementById('gifAnimado');
+  const btnSiguiente = document.getElementById('btnSiguiente');
+
   window.onload = () => {
     setTimeout(() => {
       document.getElementById('contenidoPagina').classList.add('visible');
       document.querySelector('.cortina.izquierda').style.display = 'none';
       document.querySelector('.cortina.derecha').style.display = 'none';
-
-      // Reiniciar gif cada 20 segundos
-      const gif = document.getElementById('gifAnimado');
-      setInterval(() => {
-        const src = gif.src;
-        gif.src = '';
-        setTimeout(() => {
-          gif.src = src;
-        }, 50);
-      }, 20000);
     }, 2000);
+
+    // Mostrar el botón después de 10 segundos
+    setTimeout(() => {
+      btnSiguiente.classList.add('visible');
+    }, 10000);
+
+    // Reiniciar gif cada 20 segundos
+    setInterval(() => {
+      const src = gif.src;
+      gif.src = '';
+      setTimeout(() => {
+        gif.src = src;
+      }, 50);
+    }, 20000);
+  };
+
+  function irAPagina2() {
+    window.location.href = 'pagina2.html';
   }
 </script>
 
