@@ -86,7 +86,6 @@
     font-size: 0.95rem;
     text-shadow: 0 0 3px rgba(215, 0, 86, 0.6);
   }
-
   /* Modal general */
   .modal-bg {
     position: fixed;
@@ -207,7 +206,7 @@
   <div class="icon-row">
     <!-- WhatsApp -->
     <div class="icon-wrapper">
-      <button class="icon-button" aria-label="Confirmar asistencia vía WhatsApp" id="btnWhatsApp">
+      <button class="icon-button" aria-label="Confirmar asistencia vía WhatsApp" id="btnWhatsApp" type="button">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.932 11.932 0 0012 0C5.373 0 0 5.373 0 12a11.97 11.97 0 001.638 6.008L0 24l6.204-1.592A11.926 11.926 0 0012 24c6.627 0 12-5.373 12-12 0-3.208-1.252-6.215-3.48-8.52zm-8.203 16.485a8.256 8.256 0 01-4.47-1.28l-.321-.192-3.683.945.984-3.587-.209-.356a8.24 8.24 0 012.51-11.507 8.303 8.303 0 0111.446 2.657 8.245 8.245 0 01-2.12 11.812l-.071.056-3.847 2.243-.007-.005zm4.18-6.678c-.22-.11-1.3-.643-1.5-.717-.201-.074-.348-.11-.495.11-.148.22-.57.717-.7.864-.129.148-.258.166-.479.055-.22-.11-.928-.342-1.77-1.096-.654-.581-1.095-1.298-1.223-1.52-.129-.221-.014-.34.1-.45.103-.103.22-.27.33-.405.11-.134.146-.22.22-.367.074-.148.037-.277-.019-.386-.056-.11-.495-1.19-.678-1.62-.179-.426-.36-.368-.495-.375-.128-.007-.276-.009-.422-.009a1.07 1.07 0 00-.774.36 2.826 2.826 0 00-1.04 2.475c0 1.452.99 2.856 1.13 3.053.148.197 1.954 2.984 4.74 4.183a20.237 20.237 0 002.19 1.14c.291.132.58.113.796.069.243-.048.743-.304.95-.599.204-.297.287-.553.401-.763.112-.21.075-.386-.045-.54-.118-.15-.495-.78-.713-1.087z"/></svg>
       </button>
       <div class="icon-label">WhatsApp</div>
@@ -231,7 +230,7 @@
 
     <!-- Comentario -->
     <div class="icon-wrapper">
-      <button class="icon-button" id="btnComentario" aria-label="Dejar un comentario">
+      <button class="icon-button" id="btnComentario" aria-label="Dejar un comentario" type="button">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4a2 2 0 00-2 2v18l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2z"/></svg>
       </button>
       <div class="icon-label">Comentario</div>
@@ -247,8 +246,8 @@
     <label for="nombreInput">Tu nombre:</label>
     <input type="text" id="nombreInput" name="nombreInput" placeholder="Ejemplo: Juan Pérez" aria-required="true" />
     <div class="modal-buttons">
-      <button id="enviarBtn">Enviar mensaje</button>
-      <button id="cerrarBtn" style="background:#a7003f;">Cancelar</button>
+      <button id="enviarBtn" type="button">Enviar mensaje</button>
+      <button id="cerrarBtn" type="button" style="background:#a7003f;">Cancelar</button>
     </div>
   </div>
 </div>
@@ -263,8 +262,8 @@
     <label for="commentTextInput">Mensaje:</label>
     <textarea id="commentTextInput" name="commentTextInput" placeholder="Escribe tu comentario aquí..." rows="4" aria-required="true"></textarea>
     <div class="modal-buttons">
-      <button id="sendCommentBtn">Enviar comentario</button>
-      <button id="closeCommentBtn" style="background:#a7003f;">Cancelar</button>
+      <button id="sendCommentBtn" type="button">Enviar comentario</button>
+      <button id="closeCommentBtn" type="button" style="background:#a7003f;">Cancelar</button>
     </div>
   </div>
 </div>
@@ -275,7 +274,26 @@
   <div id="commentsList"></div>
 </div>
 
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
 <script>
+  // Tu configuración de Firebase (reemplaza con la tuya)
+  const firebaseConfig = {
+    apiKey: "AIzaSyARefiao7-HrGUZJLNgxLZM1ouJZnf0i80",
+    authDomain: "login-de3fd.firebaseapp.com",
+    databaseURL: "https://login-de3fd-default-rtdb.firebaseio.com",
+    projectId: "login-de3fd",
+    storageBucket: "login-de3fd.appspot.com",
+    messagingSenderId: "1064113669692",
+    appId: "1:1064113669692:web:c45b68b5a8a519536f2539",
+    measurementId: "G-TMWR9JNR18"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
   // Modales y botones
   const modalWhatsApp = document.getElementById('modalWhatsApp');
   const btnWhatsApp = document.getElementById('btnWhatsApp');
@@ -328,39 +346,36 @@
     commentTextInput.value = '';
   });
 
-  // Guardar y mostrar comentarios en localStorage
-  function loadComments() {
-    const saved = localStorage.getItem('comentariosXV');
-    if (!saved) return [];
-    try {
-      return JSON.parse(saved);
-    } catch {
-      return [];
-    }
-  }
-  function saveComments(comments) {
-    localStorage.setItem('comentariosXV', JSON.stringify(comments));
-  }
-  function renderComments() {
-    const comments = loadComments();
-    commentsList.innerHTML = '';
-    if (comments.length === 0) {
-      commentsList.innerHTML = '<p style="text-align:center; color:#a13257;">No hay comentarios aún.</p>';
-      return;
-    }
-    comments.forEach(({name, message}) => {
-      const div = document.createElement('div');
-      div.classList.add('comment-item');
-      div.innerHTML = `<div class="comment-author">${escapeHtml(name)}</div><div>${escapeHtml(message)}</div>`;
-      commentsList.appendChild(div);
-    });
-  }
+  // Escapar HTML para mostrar seguro
   function escapeHtml(text) {
     return text.replace(/[&<>"']/g, (m) => {
       return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
     });
   }
 
+  // Renderizar comentarios desde Firebase
+  function renderComments(comments) {
+    commentsList.innerHTML = '';
+    if (!comments || Object.keys(comments).length === 0) {
+      commentsList.innerHTML = '<p style="text-align:center; color:#a13257;">No hay comentarios aún.</p>';
+      return;
+    }
+    Object.values(comments).forEach(({name, message}) => {
+      const div = document.createElement('div');
+      div.classList.add('comment-item');
+      div.innerHTML = `<div class="comment-author">${escapeHtml(name)}</div><div>${escapeHtml(message)}</div>`;
+      commentsList.appendChild(div);
+    });
+  }
+
+  // Escuchar cambios en Firebase (comentarios)
+  const commentsRef = db.ref('comentariosXV');
+  commentsRef.on('value', (snapshot) => {
+    const data = snapshot.val();
+    renderComments(data);
+  });
+
+  // Enviar comentario a Firebase
   sendCommentBtn.addEventListener('click', () => {
     const name = commentNameInput.value.trim();
     const message = commentTextInput.value.trim();
@@ -374,10 +389,8 @@
       commentTextInput.focus();
       return;
     }
-    const comments = loadComments();
-    comments.push({name, message});
-    saveComments(comments);
-    renderComments();
+    const newCommentRef = commentsRef.push();
+    newCommentRef.set({ name, message });
     modalComentario.classList.remove('active');
     commentNameInput.value = '';
     commentTextInput.value = '';
@@ -397,9 +410,6 @@
       }
     }
   });
-
-  // Inicializar
-  renderComments();
 </script>
 
 </body>
