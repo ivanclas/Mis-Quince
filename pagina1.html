@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Página 1 - Cortinas con Imagen Grande y Cortinas más angostas</title>
+<title>Página 1 - Cortinas con Imagen Grande y Más Margen</title>
 <style>
   body, html {
     margin: 0; padding: 0;
@@ -27,8 +27,8 @@
 
   .pagina1-container {
     position: relative;
-    width: 90vw;
-    max-width: 500px;
+    width: 85vw;  /* más margen lateral */
+    max-width: 460px;
     height: 75vh;
     max-height: 540px;
     background: rgba(255 255 255 / 0.95);
@@ -40,11 +40,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 5px;
+    padding: 10px 20px; /* más espacio interno lateral */
     margin-top: 10px;
   }
 
-  /* Cortinas con ancho reducido a 40% para dejar margen */
   .cortina {
     position: absolute;
     top: 0;
@@ -145,8 +144,8 @@
     .pagina1-container {
       height: 70vh;
       max-height: 500px;
-      max-width: 380px;
-      padding: 10px 5px;
+      max-width: 360px;
+      padding: 10px 15px;
     }
     .boton-siguiente {
       padding: 12px 40px;
@@ -179,10 +178,10 @@
       document.querySelector('.cortina.derecha').style.display = 'none';
     }, 2000);
 
-    // Mostrar el botón después de 10 segundos
+    // Mostrar el botón después de 6 segundos
     setTimeout(() => {
       btnSiguiente.classList.add('visible');
-    }, 10000);
+    }, 6000);
   };
 
   function irAPagina2() {
