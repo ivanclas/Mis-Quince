@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Información Importante - Página 2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap');
+
+  /* Reset básico */
+  * {
+    box-sizing: border-box;
+  }
+
+  body, html {
+    margin: 0; padding: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffe5f1, #ffb7d4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+  }
+
+  /* Cortinas para animación */
+  .cortina {
+    position: fixed;
+    top: 0; bottom: 0;
+    width: 50vw;
+    background: linear-gradient(135deg, #f48fb1, #ec407a);
+    box-shadow: 0 0 20px #ec407a;
+    z-index: 9999;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+  }
+  .cortina.izquierda {
+    left: 0;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    animation-name: abrirIzquierda;
+    animation-duration: 2s;
+  }
+  .cortina.derecha {
+    right: 0;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    animation-name: abrirDerecha;
+    animation-duration: 2s;
+  }
+  @keyframes abrirIzquierda {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+  @keyframes abrirDerecha {
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+  }
+
+  /* Contenedor principal */
+  .contenedor {
+    position: relative;
+    width: 90vw;
+    max-width: 480px;
+    background: white;
+    border-radius: 25px;
+    padding: 25px 30px;
+    box-shadow:
+      0 0 20px rgba(236, 64, 122, 0.4),
+      inset 0 0 35px #f8bbd0;
+    text-align: center;
+    color: #880e4f;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards 2.1s;
+    user-select: none;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Títulos */
+  h1 {
+    font-family: 'Playfair Display', serif;
+    color: #880e4f;
+    margin-bottom: 25px;
+    font-size: 2.4rem;
+    font-weight: 700;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    margin: 20px 0 10px;
+    border-bottom: 3px solid #ec407a;
+    padding-bottom: 6px;
+  }
+
+  /* Texto */
+  p, li {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 8px 0 18px;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 10px;
+    color: #ad1457;
+  }
+  ul li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #f48fb1;
+    font-weight: bold;
+  }
+
+  /* Botón siguiente */
+  .boton-volver {
+    display: inline-block;
+    padding: 14px 40px;
+    background: #ec407a;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(236, 64, 122, 0.6);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    user-select: none;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+  }
+  .boton-volver:hover {
+    background: #ad1457;
+  }
+
+  /* Responsive */
+  @media (max-width: 420px) {
+    .contenedor {
+      width: 95vw;
+      padding: 20px 15px;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+    }
+    p, li {
+      font-size: 1rem;
+    }
+    .boton-volver {
+      padding: 12px 32px;
+      font-size: 1rem;
+      margin-top: 12px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="cortina izquierda"></div>
+<div class="cortina derecha"></div>
+
+<div class="contenedor" role="main" aria-label="Información sobre padres, padrinos y recepción">
+  <h1>Información Importante</h1>
+
+  <section aria-labelledby="titulo-padres">
+    <h2 id="titulo-padres">Mis Padres</h2>
+    <ul>
+      <li>German Alvarez Lopez</li>
+      <li>Domenica Chupillón Villanueva</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="titulo-padrinos">
+    <h2 id="titulo-padrinos">Mis Padrinos</h2>
+    <ul>
+      <li>José Vargas Mondragón</li>
+      <li>Flor Maldonado Zúñiga</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="titulo-recepcion">
+    <h2 id="titulo-recepcion">Recepción</h2>
+    <p>Campo deportivo Sintético "Gonzales"</p>
+    <p>A.V. Oriente cuadra 7</p>
+  </section>
+
+  <button class="boton-volver" onclick="irAPagina3()" aria-label="Ir a la página siguiente">Siguiente</button>
+</div>
+
+<script>
+  function irAPagina3() {
+    window.location.href = 'pagina3.html'; // Cambia esta URL si quieres otro destino
+  }
+</script>
+
+</body>
+</html>
