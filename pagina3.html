@@ -20,6 +20,15 @@
     position: relative;
   }
 
+  /* Scroll invisible */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  * {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+  }
+
   /* Cortinas */
   .cortina {
     position: fixed;
@@ -61,7 +70,7 @@
     max-width: 400px;
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(191, 0, 67, 0.7);
-    overflow: hidden;
+    overflow: auto; /* permite scroll si necesario */
     opacity: 0;
     transition: opacity 1s ease 2.5s;
   }
@@ -175,14 +184,12 @@
 
 <script>
   window.onload = () => {
-    // Cortinas se abren
     setTimeout(() => {
       document.querySelector('.cortina.izquierda').style.display = 'none';
       document.querySelector('.cortina.derecha').style.display = 'none';
       document.getElementById('gifContainer').classList.add('visible');
     }, 2500);
 
-    // Botón aparece a los 6 segundos
     setTimeout(() => {
       document.getElementById('btnSiguiente').classList.add('visible');
     }, 6000);
