@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Página 1 - Cortinas con GIF Grande</title>
+<style>
+  body, html {
+    margin: 0; padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffdee9, #b5fffc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, #ffdee9, #b5fffc);
+    filter: blur(15px);
+    z-index: -1;
+  }
+
+  .pagina1-container {
+    position: relative;
+    width: 90vw;
+    max-width: 600px;
+    height: 80vh;
+    max-height: 600px;
+    background: rgba(255 255 255 / 0.9);
+    box-shadow:
+      0 10px 40px rgba(217, 79, 124, 0.3),
+      inset 0 0 60px rgba(255, 192, 203, 0.25);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Sin padding para que GIF ocupe todo el espacio */
+    padding: 0;
+  }
+
+  .cortina {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff4a91, #ff86c6);
+    box-shadow:
+      inset 0 0 20px rgba(255, 255, 255, 0.5),
+      0 0 30px rgba(255, 74, 145, 0.9);
+    z-index: 10;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.1),
+        rgba(255,255,255,0.1) 6px,
+        rgba(255,255,255,0.2) 12px,
+        rgba(255,255,255,0.2) 18px
+      );
+    transition: box-shadow 0.3s ease;
+  }
+  .cortina.izquierda {
+    left: 0;
+    border-top-left-radius: 18px;
+    border-bottom-left-radius: 18px;
+    animation-name: abrirIzquierda;
+  }
+  .cortina.derecha {
+    right: 0;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    animation-name: abrirDerecha;
+  }
+
+  @keyframes abrirIzquierda {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+
+  @keyframes abrirDerecha {
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+  }
+
+  /* Contenedor del GIF */
+  .contenido-pagina {
+    opacity: 0;
+    transition: opacity 1s ease 2s;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+  }
+
+  .contenido-pagina.visible {
+    opacity: 1;
+  }
+
+  /* GIF grande y responsive */
+  .contenido-pagina img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    object-fit: contain;
+  }
+</style>
+</head>
+<body>
+
+<div class="pagina1-container">
+  <div class="cortina izquierda"></div>
+  <div class="cortina derecha"></div>
+
+  <div class="contenido-pagina" id="contenidoPagina">
+    <img id="gifAnimado" src="imagen1.png" alt="Animación GIF bienvenida" loading="lazy" />
+  </div>
+</div>
+
+<script>
+  window.onload = () => {
+    setTimeout(() => {
+      document.getElementById('contenidoPagina').classList.add('visible');
+      document.querySelector('.cortina.izquierda').style.display = 'none';
+      document.querySelector('.cortina.derecha').style.display = 'none';
+
+      // Reiniciar gif cada 20 segundos
+      const gif = document.getElementById('gifAnimado');
+      setInterval(() => {
+        const src = gif.src;
+        gif.src = '';
+        setTimeout(() => {
+          gif.src = src;
+        }, 50);
+      }, 20000);
+    }, 2000);
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Invitación estilizada con fondo y animación</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  body, html {
+    margin: 0; padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fef6f9, #fcdce5);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Brillitos de fondo */
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    opacity: 0.8;
+    animation: twinkle 3s infinite ease-in-out;
+    box-shadow: 0 0 5px 2px white;
+  }
+
+  .star:nth-child(1) {
+    width: 3px; height: 3px;
+    top: 15%;
+    left: 20%;
+    animation-delay: 0s;
+  }
+  .star:nth-child(2) {
+    width: 2px; height: 2px;
+    top: 40%;
+    left: 80%;
+    animation-delay: 1.2s;
+  }
+  .star:nth-child(3) {
+    width: 4px; height: 4px;
+    top: 70%;
+    left: 30%;
+    animation-delay: 2.1s;
+  }
+  .star:nth-child(4) {
+    width: 3px; height: 3px;
+    top: 85%;
+    left: 70%;
+    animation-delay: 0.6s;
+  }
+  .star:nth-child(5) {
+    width: 2px; height: 2px;
+    top: 55%;
+    left: 50%;
+    animation-delay: 1.8s;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.3; }
+  }
+
+  /* Contenedor principal para centrar tarjeta y botón */
+  .contenedor {
+    width: 90vw;
+    max-width: 280px;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Tarjeta con animación de flotación */
+  .sobre {
+    width: 100%;
+    min-height: 220px;
+    position: relative;
+    border-radius: 18px;
+    background: white;
+    box-shadow:
+      0 8px 25px rgba(255, 105, 150, 0.2),
+      inset 0 0 12px #ffe9f2;
+    cursor: pointer;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    animation: flotar 4s ease-in-out infinite;
+  }
+  .sobre:hover {
+    box-shadow:
+      0 16px 40px rgba(255, 105, 150, 0.35),
+      inset 0 0 18px #ffd4dc;
+  }
+
+  @keyframes flotar {
+    0%, 100% {
+      transform: translateY(0);
+      box-shadow:
+        0 8px 25px rgba(255, 105, 150, 0.2),
+        inset 0 0 12px #ffe9f2;
+    }
+    50% {
+      transform: translateY(-15px);
+      box-shadow:
+        0 20px 40px rgba(255, 105, 150, 0.3),
+        inset 0 0 20px #ffd4dc;
+    }
+  }
+
+  /* Tapa triangular invertida (pico hacia abajo) */
+  .tapa {
+    width: 0; height: 0;
+    border-left: 40vw solid #ff7a9e;
+    max-border-left: 140px;
+    border-right: 40vw solid #ff7a9e;
+    max-border-right: 140px;
+    border-top: 95px solid transparent;
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 5px 14px rgba(255, 122, 158, 0.7);
+    transform-origin: top center;
+    transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+    backface-visibility: hidden;
+    z-index: 20;
+    align-self: center;
+  }
+
+  /* Corazón sello */
+  .corazon {
+    position: absolute;
+    top: 95px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12vw;
+    max-width: 46px;
+    height: 11vw;
+    max-height: 44px;
+    background: linear-gradient(135deg, #e73a6d, #b92250);
+    clip-path: polygon(
+      50% 0%, 62% 18%, 77% 18%, 85% 35%, 
+      85% 55%, 77% 73%, 50% 100%, 23% 73%, 
+      15% 55%, 15% 35%, 23% 18%, 38% 18%
+    );
+    box-shadow:
+      0 4px 8px rgba(200, 29, 88, 0.7),
+      inset 0 4px 8px rgba(249, 65, 104, 0.8);
+    filter: drop-shadow(0 2px 4px rgba(249, 65, 104, 0.5));
+    z-index: 30;
+    user-select: none;
+    transition: opacity 0.5s ease;
+  }
+
+  /* Texto adelantado */
+  .texto-adelantado {
+    position: absolute;
+    top: 11vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    text-align: center;
+    z-index: 15;
+    color: #b92f54;
+    font-weight: 600;
+    font-size: 4.8vw;
+    max-font-size: 1.8rem;
+    user-select: none;
+    pointer-events: none;
+    text-shadow: 0 2px 5px rgba(185, 47, 84, 0.3);
+    transition: opacity 0.5s ease;
+  }
+
+  /* Contenido interno centrado */
+  .contenido {
+    background: #fff1f5;
+    border-radius: 0 0 18px 18px;
+    padding: 20px 25px;
+    box-sizing: border-box;
+    color: #7e3850;
+    z-index: 5;
+    user-select: none;
+    overflow-wrap: break-word;
+    box-shadow: inset 0 0 15px #ffc7d3;
+
+    /* Flexbox para centrar contenido */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.85s ease, transform 0.85s ease;
+    text-align: center;
+  }
+
+  .contenido h2 {
+    font-family: 'Playfair Display', serif;
+    color: #d93967;
+    font-weight: 700;
+    margin: 0 0 18px 0;
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .contenido p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    margin: 0;
+    line-height: 1.5;
+    max-width: 250px;
+  }
+
+  /* Estado abierto */
+  .sobre.abierto {
+    box-shadow:
+      0 20px 45px rgba(255, 105, 150, 0.6),
+      inset 0 0 25px #ffc5d1;
+  }
+
+  .sobre.abierto .tapa {
+    transform: rotateX(90deg);
+    box-shadow: none;
+  }
+
+  .sobre.abierto .corazon {
+    opacity: 0;
+  }
+
+  .sobre.abierto .texto-adelantado {
+    opacity: 0.3;
+  }
+
+  .sobre.abierto .contenido {
+    opacity: 1;
+    transform: translateY(0);
+    user-select: text;
+  }
+
+  /* Botón siguiente */
+  .boton-siguiente {
+    margin-top: 20px;
+    padding: 14px 38px;
+    background: #d93967;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 28px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 7px 20px rgba(217, 57, 103, 0.7);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+    user-select: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    align-self: center;
+  }
+
+  .boton-siguiente.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .boton-siguiente:hover {
+    background: #b21648;
+  }
+
+  /* Responsive para móviles muy pequeños */
+  @media (max-width: 320px) {
+    .sobre {
+      min-height: 200px;
+    }
+    .tapa {
+      border-left: 38vw solid #ff7a9e;
+      border-right: 38vw solid #ff7a9e;
+      border-top: 85px solid transparent;
+    }
+    .corazon {
+      width: 40px;
+      height: 38px;
+      top: 90px;
+    }
+    .texto-adelantado {
+      font-size: 4vw;
+      top: 10vw;
+    }
+    .contenido h2 {
+      font-size: 1.7rem;
+    }
+    .contenido p {
+      font-size: 1rem;
+      max-width: 220px;
+    }
+    .boton-siguiente {
+      padding: 12px 30px;
+      font-size: 1rem;
+    }
+  }
+
+  /* Ajustes para pantallas grandes */
+  @media (min-width: 900px) {
+    .contenedor {
+      max-width: 500px;
+    }
+    .sobre {
+      min-height: 350px;
+    }
+    .contenido h2 {
+      font-size: 3.5rem;
+    }
+    .contenido p {
+      font-size: 1.5rem;
+      max-width: 400px;
+    }
+    .boton-siguiente {
+      font-size: 1.6rem;
+      padding: 18px 50px;
+    }
+    .texto-adelantado {
+      font-size: 2.6rem !important;
+      top: 20px !important;
+      width: 90% !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Brillitos de fondo -->
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+
+<div class="contenedor">
+  <div class="sobre-container">
+    <div class="sobre" id="sobre" tabindex="0" role="button" aria-pressed="false" 
+         onclick="toggleSobre()" 
+         onkeydown="if(event.key==='Enter' || event.key===' ') toggleSobre()">
+      <div class="tapa"></div>
+      <div class="corazon"></div>
+      <div class="texto-adelantado">¡Presiona Aquí!</div>
+      <div class="cuerpo"></div>
+      <div class="contenido" aria-hidden="true">
+        <h2>¡Estás invitado!</h2>
+        <p>Acompáñanos a celebrar los XV añitos de Karelis Yasmin ✨</p>
+      </div>
+    </div>
+  </div>
+  <button class="boton-siguiente" id="btnSiguiente" aria-label="Ir a la siguiente sección de la invitación" onclick="irAVentana2()">Siguiente</button>
+</div>
+
+<script>
+  const sobre = document.getElementById('sobre');
+  const btnSiguiente = document.getElementById('btnSiguiente');
+  const contenido = sobre.querySelector('.contenido');
+
+  function toggleSobre() {
+    const abierto = sobre.classList.toggle('abierto');
+    sobre.setAttribute('aria-pressed', abierto);
+    contenido.setAttribute('aria-hidden', !abierto);
+
+    if (abierto) {
+      btnSiguiente.classList.add('visible');
+    } else {
+      btnSiguiente.classList.remove('visible');
+    }
+  }
+
+  function irAVentana2() {
+    window.location.href = 'pagina1.html';
+  }
+</script>
+
+</body>
+</html>
