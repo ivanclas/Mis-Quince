@@ -13,31 +13,31 @@
     margin: 0; padding: 0;
     min-height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ffcee8, #ffb3ca);
+    background: linear-gradient(135deg, #66aaff, #1e3c72); /* Fondo azul vibrante */
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 15px 10px;
   }
   .container {
-    background: #fff0f6;
+    background: #f0f7ff; /* Fondo más claro para contrastar con el azul */
     border-radius: 25px;
     padding: 25px 20px 30px;
     max-width: 380px;
     width: 100%;
-    box-shadow: 0 12px 40px rgba(255, 20, 80, 0.25);
+    box-shadow: 0 12px 40px rgba(0, 94, 146, 0.25); /* Sombras sutiles */
     text-align: center;
   }
   h2 {
     font-family: 'Montserrat', sans-serif;
-    color: #d70056;
+    color: #005bb5; /* Azul más fuerte para el título */
     font-weight: 700;
     margin-bottom: 15px;
     font-size: 1.7rem;
-    text-shadow: 1px 1px 6px rgba(215, 0, 86, 0.4);
+    text-shadow: 1px 1px 6px rgba(0, 94, 146, 0.4); /* Sombra sutil */
   }
   p {
-    color: #a13257;
+    color: #003f7f; /* Color azul oscuro para el texto */
     font-weight: 600;
     font-size: 1rem;
     margin-bottom: 30px;
@@ -55,7 +55,7 @@
     align-items: center;
   }
   .icon-button {
-    background: #d70056;
+    background: #005bb5; /* Azul brillante para los íconos */
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -63,13 +63,13 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    box-shadow: 0 10px 25px rgba(215, 0, 86, 0.5);
+    box-shadow: 0 10px 25px rgba(0, 94, 146, 0.5);
     transition: background-color 0.3s ease, transform 0.3s ease;
     user-select: none;
     border: none;
   }
   .icon-button:hover, .icon-button:focus {
-    background: #a7003f;
+    background: #004c8c; /* Azul más oscuro al hacer hover */
     transform: scale(1.1);
     outline: none;
   }
@@ -82,9 +82,9 @@
   .icon-label {
     margin-top: 6px;
     font-weight: 700;
-    color: #d70056;
+    color: #005bb5; /* Azul brillante para los textos */
     font-size: 0.95rem;
-    text-shadow: 0 0 3px rgba(215, 0, 86, 0.6);
+    text-shadow: 0 0 3px rgba(0, 94, 146, 0.6);
   }
   /* Modal general */
   .modal-bg {
@@ -100,17 +100,17 @@
     display: flex;
   }
   .modal-content {
-    background: #fff0f6;
+    background: #f0f7ff; /* Fondo claro para los modales */
     border-radius: 20px;
     padding: 20px 25px;
     max-width: 320px;
     width: 90vw;
-    box-shadow: 0 8px 30px rgba(215,0,86,0.5);
+    box-shadow: 0 8px 30px rgba(0, 94, 146, 0.5);
     text-align: center;
   }
   .modal-content h3 {
     margin-top: 0;
-    color: #d70056;
+    color: #005bb5; /* Título modal con azul brillante */
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 1.3rem;
@@ -119,7 +119,7 @@
   .modal-content label {
     display: block;
     font-weight: 600;
-    color: #a13257;
+    color: #003f7f;
     margin-bottom: 6px;
     text-align: left;
   }
@@ -128,7 +128,7 @@
     width: 100%;
     padding: 8px 10px;
     font-size: 0.95rem;
-    border: 2px solid #d70056;
+    border: 2px solid #005bb5;
     border-radius: 12px;
     margin-bottom: 18px;
     outline: none;
@@ -137,17 +137,17 @@
   }
   .modal-content input[type="text"]:focus,
   .modal-content textarea:focus {
-    border-color: #a7003f;
+    border-color: #003f7f; /* Cambio de borde a un azul más oscuro */
   }
   .modal-buttons {
     display: flex;
-    flex-direction: column; /* vertical stack */
-    gap: 12px;              /* spacing between buttons */
-    align-items: center;    /* center horizontally */
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
     margin-top: 10px;
   }
   .modal-content button {
-    background: #d70056;
+    background: #005bb5; /* Azul brillante para botones */
     color: white;
     font-weight: 700;
     border: none;
@@ -155,7 +155,7 @@
     padding: 8px 20px;
     font-size: 0.85rem;
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(215, 0, 86, 0.8);
+    box-shadow: 0 6px 20px rgba(0, 94, 146, 0.8);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     user-select: none;
@@ -165,40 +165,40 @@
     transition: background-color 0.3s ease;
   }
   .modal-content button:hover {
-    background-color: #a7003f;
+    background-color: #003f7f; /* Azul oscuro al hacer hover */
   }
   /* Comentarios lista */
   .comments-container {
     max-width: 380px;
     width: 100%;
-    background: #fff0f6;
+    background: #f0f7ff;
     border-radius: 25px;
-    box-shadow: 0 12px 40px rgba(255, 20, 80, 0.25);
+    box-shadow: 0 12px 40px rgba(0, 94, 146, 0.25);
     padding: 18px 15px;
     margin: 15px auto 0;
     max-height: 270px;
     overflow-y: auto;
     font-size: 0.9rem;
-    color: #a13257;
+    color: #003f7f;
   }
   .comments-container h3 {
     margin-top: 0;
     margin-bottom: 12px;
     font-weight: 700;
-    color: #d70056;
+    color: #005bb5;
   }
   .comment-item {
-    background: #ffcee8;
+    background: #d3e0f0;
     border-radius: 15px;
     padding: 8px 12px;
     margin-bottom: 10px;
-    box-shadow: inset 0 0 8px #d70056;
+    box-shadow: inset 0 0 8px #005bb5;
     text-align: left;
   }
   .comment-author {
     font-weight: 700;
     margin-bottom: 4px;
-    color: #d70056;
+    color: #005bb5;
   }
 </style>
 </head>
@@ -206,7 +206,7 @@
 
 <div class="container" role="main" aria-label="Confirmación de asistencia">
   <h2>Confirma tu asistencia</h2>
-  <p>Presiona un ícono para comunicarte, agendar o ubicar el evento de los XV años de Karelis Yasmin</p>
+  <p>Presiona un ícono para comunicarte, agendar o ubicar el evento de los XV años de Kareliz Yasmin</p>
 
   <div class="icon-row">
     <!-- WhatsApp -->
@@ -247,7 +247,7 @@
 <div class="modal-bg" id="modalWhatsApp" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
   <div class="modal-content">
     <h3 id="modalTitle">Confirma tu asistencia</h3>
-    <p id="modalDesc">Ingresa tu nombre para enviar un mensaje personalizado a Karelis</p>
+    <p id="modalDesc">Ingresa tu nombre para enviar un mensaje personalizado a Kareliz</p>
     <label for="nombreInput">Tu nombre:</label>
     <input type="text" id="nombreInput" name="nombreInput" placeholder="Ejemplo: Juan Pérez" aria-required="true" />
     <div class="modal-buttons">
@@ -261,7 +261,7 @@
 <div class="modal-bg" id="modalComentario" role="dialog" aria-modal="true" aria-labelledby="modalCommentTitle" aria-describedby="modalCommentDesc">
   <div class="modal-content">
     <h3 id="modalCommentTitle">Deja tu comentario</h3>
-    <p id="modalCommentDesc">Escribe tu nombre y tu mensaje para Karelis</p>
+    <p id="modalCommentDesc">Escribe tu nombre y tu mensaje para Kareliz</p>
     <label for="commentNameInput">Tu nombre:</label>
     <input type="text" id="commentNameInput" name="commentNameInput" placeholder="Tu nombre" aria-required="true" />
     <label for="commentTextInput">Mensaje:</label>
@@ -275,7 +275,7 @@
 
 <!-- Comentarios guardados -->
 <div class="comments-container" aria-live="polite" aria-label="Comentarios para Karelis" tabindex="0">
-  <h3>Comentarios para Karelis</h3>
+  <h3>Comentarios para Kareliz</h3>
   <div id="commentsList"></div>
 </div>
 
@@ -319,12 +319,10 @@
   btnWhatsApp.addEventListener('click', () => {
     modalWhatsApp.classList.add('active');
     nombreInput.focus();
-    history.pushState({modal: 'whatsapp'}, '', '#modalWhatsApp'); // Añadir estado al historial
   });
   cerrarBtn.addEventListener('click', () => {
     modalWhatsApp.classList.remove('active');
     nombreInput.value = '';
-    history.back(); // Regresar historial para evitar acumulación
   });
 
   // Enviar mensaje WhatsApp
@@ -340,20 +338,17 @@
     window.open(url, '_blank');
     modalWhatsApp.classList.remove('active');
     nombreInput.value = '';
-    history.back();
   });
 
   // Abrir y cerrar modal Comentario
   btnComentario.addEventListener('click', () => {
     modalComentario.classList.add('active');
     commentNameInput.focus();
-    history.pushState({modal: 'comentario'}, '', '#modalComentario'); // Añadir estado al historial
   });
   closeCommentBtn.addEventListener('click', () => {
     modalComentario.classList.remove('active');
     commentNameInput.value = '';
     commentTextInput.value = '';
-    history.back();
   });
 
   // Escapar HTML para mostrar seguro
@@ -404,36 +399,6 @@
     modalComentario.classList.remove('active');
     commentNameInput.value = '';
     commentTextInput.value = '';
-    history.back();
-  });
-
-  // Cerrar modales con ESC y manejar botón atrás
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      if (modalWhatsApp.classList.contains('active')) {
-        modalWhatsApp.classList.remove('active');
-        nombreInput.value = '';
-        history.back();
-      }
-      if (modalComentario.classList.contains('active')) {
-        modalComentario.classList.remove('active');
-        commentNameInput.value = '';
-        commentTextInput.value = '';
-        history.back();
-      }
-    }
-  });
-  window.addEventListener('popstate', (e) => {
-    // Si hay un modal abierto, cerrarlo en lugar de retroceder página
-    if (modalWhatsApp.classList.contains('active')) {
-      modalWhatsApp.classList.remove('active');
-      nombreInput.value = '';
-    }
-    if (modalComentario.classList.contains('active')) {
-      modalComentario.classList.remove('active');
-      commentNameInput.value = '';
-      commentTextInput.value = '';
-    }
   });
 </script>
 

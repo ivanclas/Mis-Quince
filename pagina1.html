@@ -3,58 +3,60 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Página 1 - Cortinas con Imagen Grande y Más Margen</title>
+<title>Página 1 - Cortinas con Imagen Grande y Cortinas más angostas (Azul Brilloso)</title>
 <style>
   body, html {
     margin: 0; padding: 0;
     min-height: 100vh;
-    background: linear-gradient(135deg, #ffdee9, #b5fffc);
+    background: linear-gradient(135deg, #0066cc, #33ccff); /* Fondo azul brilloso */
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: #e0f0ff;
   }
 
   body::before {
     content: "";
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, #ffdee9, #b5fffc);
+    background: linear-gradient(135deg, #0066cc, #33ccff); /* Fondo azul brilloso */
     filter: blur(15px);
     z-index: -1;
   }
 
   .pagina1-container {
     position: relative;
-    width: 85vw;  /* más margen lateral */
-    max-width: 460px;
+    width: 90vw;
+    max-width: 500px;
     height: 75vh;
     max-height: 540px;
     background: rgba(255 255 255 / 0.95);
     box-shadow:
-      0 10px 40px rgba(217, 79, 124, 0.3),
-      inset 0 0 60px rgba(255, 192, 203, 0.25);
+      0 10px 40px rgba(0, 94, 146, 0.3),
+      inset 0 0 60px rgba(163, 213, 207, 0.25);
     border-radius: 20px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px; /* más espacio interno lateral */
+    padding: 10px 5px;
     margin-top: 10px;
   }
 
+  /* Cortinas con el azul brilloso */
   .cortina {
     position: absolute;
     top: 0;
     width: 40%;
     height: 100%;
-    background: linear-gradient(135deg, #ff4a91, #ff86c6);
+    background: linear-gradient(135deg, #0074d9, #1e3c72);
     box-shadow:
-      inset 0 0 20px rgba(255, 255, 255, 0.5),
-      0 0 30px rgba(255, 74, 145, 0.9);
+      inset 0 0 20px rgba(255, 255, 255, 0.6),
+      0 0 30px rgba(0, 117, 188, 0.9);
     z-index: 10;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
     background-image:
@@ -111,20 +113,20 @@
     max-height: 97%;
     border-radius: 20px;
     object-fit: contain;
-    box-shadow: 0 0 15px rgba(217, 79, 124, 0.3);
+    box-shadow: 0 0 15px rgba(0, 94, 146, 0.3);
   }
 
   .boton-siguiente {
     margin: 20px auto 25px auto;
     padding: 14px 50px;
-    background-color: #d93967;
+    background-color: #0074d9;
     color: white;
     font-weight: 700;
     border: none;
     border-radius: 28px;
     font-size: 1.2rem;
     cursor: pointer;
-    box-shadow: 0 7px 20px rgba(217, 57, 103, 0.7);
+    box-shadow: 0 7px 20px rgba(0, 94, 146, 0.7);
     transition: background-color 0.3s ease;
     user-select: none;
     letter-spacing: 0.05em;
@@ -137,15 +139,15 @@
   }
 
   .boton-siguiente:hover {
-    background-color: #b21648;
+    background-color: #005bb5;
   }
 
   @media (max-width: 420px) {
     .pagina1-container {
       height: 70vh;
       max-height: 500px;
-      max-width: 360px;
-      padding: 10px 15px;
+      max-width: 380px;
+      padding: 10px 5px;
     }
     .boton-siguiente {
       padding: 12px 40px;
@@ -157,12 +159,18 @@
 </head>
 <body>
 
+<!-- Reproductor de música de fondo -->
+<audio id="background-audio" loop>
+  <source src="fondo.mp3" type="audio/mp3">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+
 <div class="pagina1-container">
   <div class="cortina izquierda"></div>
   <div class="cortina derecha"></div>
 
   <div class="contenido-pagina" id="contenidoPagina">
-    <img id="imagenGrande" src="imagen1.png" alt="Imagen de invitación" loading="lazy" />
+    <img id="imagenGrande" src="pagina1.png" alt="Imagen de invitación" loading="lazy" />
   </div>
 </div>
 
@@ -171,17 +179,23 @@
 <script>
   const btnSiguiente = document.getElementById('btnSiguiente');
 
+  // Asegurarse de que la música solo se reproduzca después de un clic en cualquier parte de la página
+  window.addEventListener('click', () => {
+    const audio = document.getElementById('background-audio');
+    audio.play(); // Reproducir la música al hacer clic
+  });
+
   window.onload = () => {
     setTimeout(() => {
       document.getElementById('contenidoPagina').classList.add('visible');
       document.querySelector('.cortina.izquierda').style.display = 'none';
       document.querySelector('.cortina.derecha').style.display = 'none';
-    }, 2000);
+    }, 1000); /* Tiempo reducido para mostrar la imagen más rápido */
 
-    // Mostrar el botón después de 6 segundos
+    // Mostrar el botón después de 5 segundos
     setTimeout(() => {
       btnSiguiente.classList.add('visible');
-    }, 6000);
+    }, 5000); /* Tiempo reducido para mostrar el botón */
   };
 
   function irAPagina2() {

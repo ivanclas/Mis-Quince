@@ -1,12 +1,12 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Karelis Yasmin XV años//ES
+PRODID:-//Kareliz Yasmin XV años//ES
 BEGIN:VEVENT
 UID:20250621T190000-001@karelisxv.com
 DTSTAMP:20250601T000000Z
 DTSTART:20250621T190000Z
 DTEND:20250621T230000Z
-SUMMARY:XV Años de Karelis Yasmin
+SUMMARY:XV Años de Kareliz Yasmin
 DESCRIPTION:Ven a celebrar conmigo este día especial.
 LOCATION:Av Paseo de la República, Lima, Perú
 END:VEVENT

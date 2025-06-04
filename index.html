@@ -3,30 +3,31 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Invitación estilizada con fondo y animación</title>
+<title>Invitación Azul y Blanco Brilloso</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins&display=swap" rel="stylesheet">
 <style>
   body, html {
     margin: 0; padding: 0;
     height: 100vh;
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #fef6f9, #fcdce5);
-    position: relative;
+    background: linear-gradient(135deg, #3b79b0, #5c97ca); /* Azul brilloso ajustado */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: #222;
   }
 
-  /* Brillitos de fondo */
+  /* Brillitos de fondo azul brilloso */
   .star {
     position: absolute;
     border-radius: 50%;
-    background: white;
-    opacity: 0.8;
+    background: #a0d8ff;
+    opacity: 0.9;
     animation: twinkle 3s infinite ease-in-out;
-    box-shadow: 0 0 5px 2px white;
+    box-shadow: 0 0 8px 4px #6ec1ff;
   }
   .star:nth-child(1) { width: 3px; height: 3px; top: 15%; left: 20%; animation-delay: 0s; }
   .star:nth-child(2) { width: 2px; height: 2px; top: 40%; left: 80%; animation-delay: 1.2s; }
@@ -34,70 +35,69 @@
   .star:nth-child(4) { width: 3px; height: 3px; top: 85%; left: 70%; animation-delay: 0.6s; }
   .star:nth-child(5) { width: 2px; height: 2px; top: 55%; left: 50%; animation-delay: 1.8s; }
   @keyframes twinkle {
-    0%, 100% { opacity: 0.8; }
-    50% { opacity: 0.3; }
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 0.4; }
   }
 
   .contenedor {
     width: 95vw;
-    max-width: 400px;
+    max-width: 420px;
     text-align: center;
     z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    padding: 15px;
   }
 
   .sobre {
     width: 100%;
-    min-height: 280px;
+    min-height: 300px;
     position: relative;
-    border-radius: 20px;
-    background: white;
+    border-radius: 25px;
+    background: #ffffff;
     box-shadow:
-      0 8px 30px rgba(255, 105, 150, 0.3),
-      inset 0 0 15px #ffe9f2;
+      0 12px 40px rgba(0, 0, 0, 0.15),
+      inset 0 0 25px rgba(200, 220, 255, 0.4);
     cursor: pointer;
     overflow: hidden;
     transform-style: preserve-3d;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.4s ease;
     display: flex;
     flex-direction: column;
-    animation: flotar 4s ease-in-out infinite;
+    animation: flotar 4.5s ease-in-out infinite;
   }
   .sobre:hover {
     box-shadow:
-      0 18px 45px rgba(255, 105, 150, 0.45),
-      inset 0 0 22px #ffd4dc;
+      0 24px 70px rgba(0, 81, 153, 0.4),
+      inset 0 0 35px rgba(100, 150, 255, 0.4);
   }
-
   @keyframes flotar {
     0%, 100% {
       transform: translateY(0);
       box-shadow:
-        0 8px 30px rgba(255, 105, 150, 0.3),
-        inset 0 0 15px #ffe9f2;
+        0 12px 40px rgba(0, 0, 0, 0.15),
+        inset 0 0 25px rgba(200, 220, 255, 0.4);
     }
     50% {
-      transform: translateY(-12px);
+      transform: translateY(-16px);
       box-shadow:
-        0 25px 50px rgba(255, 105, 150, 0.35),
-        inset 0 0 25px #ffd4dc;
+        0 38px 75px rgba(0, 81, 153, 0.5),
+        inset 0 0 40px rgba(100, 150, 255, 0.5);
     }
   }
 
   .tapa {
     width: 0; height: 0;
-    border-left: 45vw solid #ff7a9e;
-    max-border-left: 180px;
-    border-right: 45vw solid #ff7a9e;
-    max-border-right: 180px;
-    border-top: 110px solid transparent;
-    border-radius: 20px 20px 0 0;
-    box-shadow: 0 6px 16px rgba(255, 122, 158, 0.7);
+    border-left: 45vw solid #4a90e2;
+    max-border-left: 190px;
+    border-right: 45vw solid #4a90e2;
+    max-border-right: 190px;
+    border-top: 120px solid transparent;
+    border-radius: 25px 25px 0 0;
+    box-shadow: 0 8px 24px rgba(74, 144, 226, 0.7);
     transform-origin: top center;
-    transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     backface-visibility: hidden;
     z-index: 20;
     align-self: center;
@@ -105,56 +105,56 @@
 
   .corazon {
     position: absolute;
-    top: 110px;
+    top: 120px;
     left: 50%;
     transform: translateX(-50%);
-    width: 14vw;
-    max-width: 54px;
-    height: 13vw;
-    max-height: 50px;
-    background: linear-gradient(135deg, #e73a6d, #b92250);
+    width: 16vw;
+    max-width: 58px;
+    height: 15vw;
+    max-height: 54px;
+    background: linear-gradient(135deg, #4a90e2, #0d47a1);
     clip-path: polygon(
       50% 0%, 62% 18%, 77% 18%, 85% 35%, 
       85% 55%, 77% 73%, 50% 100%, 23% 73%, 
       15% 55%, 15% 35%, 23% 18%, 38% 18%
     );
     box-shadow:
-      0 5px 10px rgba(200, 29, 88, 0.7),
-      inset 0 5px 10px rgba(249, 65, 104, 0.8);
-    filter: drop-shadow(0 3px 6px rgba(249, 65, 104, 0.5));
+      0 6px 14px rgba(13, 71, 161, 0.85),
+      inset 0 6px 14px rgba(74, 144, 226, 0.95);
+    filter: drop-shadow(0 4px 9px rgba(74, 144, 226, 0.6));
     z-index: 30;
     user-select: none;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.6s ease;
   }
 
   .texto-adelantado {
     position: absolute;
-    top: 13vw;
+    top: 14vw;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
     text-align: center;
     z-index: 15;
-    color: #b92f54;
-    font-weight: 600;
-    font-size: 4vw;
-    max-font-size: 1.3rem;
+    color: #3a64a1;
+    font-weight: 700;
+    font-size: 4.2vw;
+    max-font-size: 1.5rem;
     user-select: none;
     pointer-events: none;
-    text-shadow: 0 3px 7px rgba(185, 47, 84, 0.3);
-    transition: opacity 0.5s ease;
+    text-shadow: 0 3px 6px rgba(58, 100, 161, 0.4);
+    transition: opacity 0.6s ease;
   }
 
   .contenido {
-    background: #fff1f5;
-    border-radius: 0 0 20px 20px;
-    padding: 25px 30px;
+    background: #e6f0ff;
+    border-radius: 0 0 25px 25px;
+    padding: 35px 40px;
     box-sizing: border-box;
-    color: #7e3850;
+    color: #002f6c;
     z-index: 5;
     user-select: none;
     overflow-wrap: break-word;
-    box-shadow: inset 0 0 18px #ffc7d3;
+    box-shadow: inset 0 0 28px #8eb6ff;
 
     flex-grow: 1;
     display: flex;
@@ -163,30 +163,35 @@
     align-items: center;
 
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(38px);
     transition: opacity 0.85s ease, transform 0.85s ease;
     text-align: center;
     position: relative;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.7;
   }
 
   .contenido h2 {
-    font-family: 'Playfair Display', serif;
-    color: #d93967;
-    font-weight: 700;
-    margin: 0 0 20px 0;
-    font-size: 1.6rem;
-    line-height: 1.2;
+    color: #1a3d7c;
+    font-weight: 900;
+    margin: 0 0 28px 0;
+    font-size: 2.4rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
   }
 
   .contenido p {
     font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
+    font-size: 1.15rem;
+    font-weight: 400;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.7;
     max-width: 280px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
   }
 
-  /* Animación estrellitas dentro del contenido */
   .star-content {
     position: absolute;
     top: 15%;
@@ -200,46 +205,46 @@
   .star-content .star-inner {
     position: absolute;
     border-radius: 50%;
-    background: #ffd4dd;
-    opacity: 0.8;
-    box-shadow: 0 0 5px 3px #f7b1bf;
+    background: #6ea8ff;
+    opacity: 0.85;
+    box-shadow: 0 0 9px 5px #4a90e2;
     animation: twinkleContent 3s ease-in-out infinite;
   }
   .star-content .star-inner:nth-child(1) {
-    width: 6px; height: 6px;
+    width: 8px; height: 8px;
     top: 20%; left: 10%;
     animation-delay: 0s;
   }
   .star-content .star-inner:nth-child(2) {
-    width: 4px; height: 4px;
+    width: 6px; height: 6px;
     top: 50%; left: 35%;
     animation-delay: 0.7s;
   }
   .star-content .star-inner:nth-child(3) {
-    width: 5px; height: 5px;
+    width: 7px; height: 7px;
     top: 70%; left: 65%;
     animation-delay: 1.4s;
   }
   .star-content .star-inner:nth-child(4) {
-    width: 3px; height: 3px;
+    width: 5px; height: 5px;
     top: 40%; left: 80%;
     animation-delay: 2.1s;
   }
   .star-content .star-inner:nth-child(5) {
-    width: 6px; height: 6px;
+    width: 8px; height: 8px;
     top: 60%; left: 90%;
     animation-delay: 2.8s;
   }
 
   @keyframes twinkleContent {
-    0%, 100% { opacity: 0.8; }
-    50% { opacity: 0.2; }
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 0.3; }
   }
 
   .sobre.abierto {
     box-shadow:
-      0 25px 55px rgba(255, 105, 150, 0.7),
-      inset 0 0 30px #ffc5d1;
+      0 30px 70px rgba(0, 117, 188, 0.85),
+      inset 0 0 45px #3d8ee0;
   }
 
   .sobre.abierto .tapa {
@@ -252,7 +257,7 @@
   }
 
   .sobre.abierto .texto-adelantado {
-    opacity: 0.3;
+    opacity: 0.35;
   }
 
   .sobre.abierto .contenido {
@@ -261,7 +266,7 @@
     user-select: text;
   }
 
-  /* Mostrar estrellitas solo cuando esté abierto */
+  /* Mostrar estrellas dentro solo abierto */
   .sobre.abierto .star-content {
     display: block;
   }
@@ -270,68 +275,66 @@
   }
 
   .boton-siguiente {
-    margin-top: 25px;
-    padding: 14px 32px;
-    background: #d93967;
+    margin-top: 30px;
+    padding: 15px 36px;
+    background: #2384df;
     color: white;
     font-weight: 700;
     border: none;
-    border-radius: 28px;
-    font-size: 1.1rem;
+    border-radius: 32px;
+    font-size: 1.2rem;
     cursor: pointer;
-    box-shadow: 0 8px 25px rgba(217, 57, 103, 0.7);
+    box-shadow: 0 10px 30px rgba(13, 71, 161, 0.8);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.6s ease;
     user-select: none;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     align-self: center;
     max-width: 280px;
     width: 100%;
   }
-
   .boton-siguiente.visible {
     opacity: 1;
     pointer-events: auto;
   }
-
   .boton-siguiente:hover {
-    background: #b21648;
+    background: #083974;
   }
 
   @media (max-width: 480px) {
     .sobre {
-      min-height: 300px;
+      min-height: 320px;
     }
     .tapa {
-      border-left: 42vw solid #ff7a9e;
-      border-right: 42vw solid #ff7a9e;
-      border-top: 105px solid transparent;
+      border-left: 42vw solid #4a90e2;
+      border-right: 42vw solid #4a90e2;
+      border-top: 115px solid transparent;
     }
     .corazon {
-      width: 15vw;
-      max-width: 52px;
-      height: 14vw;
-      max-height: 48px;
-      top: 105px;
+      width: 17vw;
+      max-width: 56px;
+      height: 15vw;
+      max-height: 52px;
+      top: 115px;
     }
     .texto-adelantado {
-      font-size: 4.5vw;
-      top: 15vw;
+      font-size: 5vw;
+      top: 17vw;
       width: 90%;
-      max-font-size: 1.2rem;
+      max-font-size: 1.35rem;
     }
     .contenido h2 {
-      font-size: 1.3rem;
+      font-size: 1.5rem;
     }
     .contenido p {
-      font-size: 0.95rem;
+      font-size: 1.1rem;
       max-width: 280px;
     }
     .boton-siguiente {
-      font-size: 1rem;
-      padding: 12px 28px;
+      font-size: 1.1rem;
+      padding: 15px 32px;
       max-width: 100%;
     }
   }
@@ -339,17 +342,23 @@
 </head>
 <body>
 
-<!-- Brillitos de fondo -->
+<!-- Estrellitas fondo -->
 <div class="star"></div>
 <div class="star"></div>
 <div class="star"></div>
 <div class="star"></div>
 <div class="star"></div>
 
+<!-- El audio se activa con el clic en la carta -->
+<audio id="background-audio" loop>
+  <source src="fondo.mp3" type="audio/mp3">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+
 <div class="contenedor">
   <div class="sobre-container">
-    <div class="sobre" id="sobre" tabindex="0" role="button" aria-pressed="false" 
-         onclick="toggleSobre()" 
+    <div class="sobre" id="sobre" tabindex="0" role="button" aria-pressed="false"
+         onclick="toggleSobre()"
          onkeydown="if(event.key==='Enter' || event.key===' ') toggleSobre()">
       <div class="tapa"></div>
       <div class="corazon"></div>
@@ -358,8 +367,8 @@
 
       <div class="contenido" aria-hidden="true">
         <h2>¡Estás invitado!</h2>
-        <p>Acompáñanos a celebrar los XV añitos de Karelis Yasmin ✨</p>
-        
+        <p>Acompáñanos a celebrar los XV añitos de Kareliz Yasmin ✨</p>
+
         <!-- Estrellitas animadas dentro -->
         <div class="star-content" aria-hidden="true">
           <div class="star-inner"></div>
@@ -375,32 +384,35 @@
 </div>
 
 <script>
-  const sobre = document.getElementById('sobre');
-  const btnSiguiente = document.getElementById('btnSiguiente');
-  const contenido = sobre.querySelector('.contenido');
+  let voicePlayed = false; // Variable para asegurarse de que la voz solo se reproduzca una vez.
 
+  // Función para reproducir el mensaje en voz y activar música
   function toggleSobre() {
-    const abierto = sobre.classList.toggle('abierto');
-    sobre.setAttribute('aria-pressed', abierto);
-    contenido.setAttribute('aria-hidden', !abierto);
-
-    if (abierto) {
-      btnSiguiente.classList.add('visible');
-      // Opcional: quitar estrellitas después de 5 seg
-      setTimeout(() => {
-        const stars = contenido.querySelector('.star-content');
-        if(stars) stars.style.display = 'none';
-      }, 5000);
-    } else {
-      btnSiguiente.classList.remove('visible');
-      // Mostrar estrellitas nuevamente si se cierra
-      const stars = contenido.querySelector('.star-content');
-      if(stars) stars.style.display = 'block';
+    if (!voicePlayed) {
+      const mensaje = new SpeechSynthesisUtterance("Bienvenidos a todos ustedes que recibieron este mensaje");
+      mensaje.lang = 'es-ES'; // Establecer el idioma en español
+      speechSynthesis.speak(mensaje); // Reproducir el mensaje
+      voicePlayed = true; // Marcar como ya reproducida
     }
+
+    // Activar la música al hacer clic en la carta
+    const audio = document.getElementById('background-audio');
+    audio.play();
+
+    // Abrir la carta
+    const sobre = document.getElementById('sobre');
+    sobre.classList.add('abierto');
+    
+    // Mostrar el botón "Siguiente" después de abrir la carta
+    const btnSiguiente = document.getElementById('btnSiguiente');
+    btnSiguiente.classList.add('visible');
   }
 
+  // Detener música al cambiar de página
   function irAVentana2() {
-    window.location.href = 'pagina1.html';
+    const audio = document.getElementById('background-audio');
+    audio.pause(); // Detener la música cuando se haga clic en el botón "Siguiente"
+    window.location.href = 'pagina1.html'; // Redirigir a la siguiente página
   }
 </script>
 

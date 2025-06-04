@@ -4,14 +4,20 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Página 3 - Celebración con GIF y Scroll General</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap');
+
+  /* Reset básico */
+  * {
+    box-sizing: border-box;
+  }
 
   html, body {
     margin: 0; padding: 0;
     height: 100%;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ffe1ec, #ffc7d3);
+    background: linear-gradient(135deg, #0066cc, #33ccff); /* Azul brilloso */
     overflow-y: auto;
     scroll-behavior: smooth;
   }
@@ -38,9 +44,9 @@
   .cortina {
     position: fixed;
     top: 0; bottom: 0;
-    width: 40vw;
-    background: linear-gradient(135deg, #bf0043, #ff6699);
-    box-shadow: inset 0 0 30px #ff6699;
+    width: 50vw;
+    background: linear-gradient(135deg, #0074d9, #1e3c72);
+    box-shadow: inset 0 0 30px #9bc4df;
     z-index: 10;
     animation-duration: 2.5s;
     animation-fill-mode: forwards;
@@ -70,11 +76,11 @@
   /* Texto arriba */
   .texto-arriba {
     font-family: 'Playfair Display', serif;
-    color: #bf0043;
+    color: #fff;
     font-size: 2.2rem;
     font-weight: 700;
     margin-top: 20px;
-    text-shadow: 1px 1px 3px rgba(255 255 255 / 0.8);
+    text-shadow: 2px 2px 8px rgba(0, 94, 146, 0.8);
     user-select: none;
   }
 
@@ -82,14 +88,21 @@
   .gif-container {
     position: relative;
     width: 90vw;
-    max-width: 450px;
+    max-width: 480px;
     height: auto;
     margin: 20px auto;
     border-radius: 20px;
-    box-shadow: 0 0 30px rgba(191, 0, 67, 0.7);
+    box-shadow: 0 0 30px rgba(0, 94, 146, 0.7);
     display: flex;
     justify-content: center;
+    animation: fadeInGif 2s ease forwards;
   }
+
+  @keyframes fadeInGif {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
   .gif-container img {
     width: 100%;
     height: auto;
@@ -101,16 +114,16 @@
 
   /* Botón más pequeño y centrado */
   .boton-siguiente {
-    margin: 10px auto 40px auto;
-    padding: 10px 36px;
-    background-color: #bf0043;
+    margin: 20px auto 40px auto;
+    padding: 12px 48px;
+    background-color: #0074d9;
     color: white;
     font-weight: 700;
     border: none;
-    border-radius: 24px;
-    font-size: 1rem;
+    border-radius: 30px;
+    font-size: 1.2rem;
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(191, 0, 67, 0.8);
+    box-shadow: 0 6px 20px rgba(0, 94, 146, 0.8);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     transition: background-color 0.3s ease;
@@ -122,7 +135,26 @@
     display: block;
   }
   .boton-siguiente:hover {
-    background-color: #9d0038;
+    background-color: #005bb5;
+  }
+
+  /* Botón escuchar */
+  .boton-escuchar {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff8c00;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 94, 146, 0.6);
+    transition: background-color 0.3s ease;
+  }
+
+  .boton-escuchar:hover {
+    background-color: #e07a00;
   }
 
   /* Luces destello */
@@ -160,11 +192,11 @@
       margin: 15px auto;
     }
     .gif-container img {
-      max-height: 75vh;
+      max-height: 90vh;
     }
     .boton-siguiente {
       font-size: 0.9rem;
-      padding: 8px 28px;
+      padding: 10px 32px;
       margin-bottom: 30px;
       max-width: 180px;
       width: 90%;
@@ -182,16 +214,21 @@
 </head>
 <body>
 
+<!-- Reproductor de música de fondo -->
+<audio id="background-audio" loop>
+  <source src="fondo.mp3" type="audio/mp3">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+
 <div class="cortina izquierda"></div>
 <div class="cortina derecha"></div>
 
-<div class="texto-arriba">
-  <!-- Puedes poner texto aquí si quieres -->
+<div class="gif-container" id="gifContainer">
+  <img src="pagina2.gif" alt="GIF de celebración" loading="lazy" />
 </div>
 
-<div class="gif-container" id="gifContainer">
-  <img src="imagen3.gif" alt="GIF de celebración" loading="lazy" />
-</div>
+<!-- Botón de escuchar -->
+<button class="boton-escuchar" id="btnEscuchar" onclick="reproducirMensaje()">Escuchar...</button>
 
 <button class="boton-siguiente" id="btnSiguiente" aria-label="Ir a la página 4" onclick="irAPagina4()">Siguiente</button>
 
@@ -199,6 +236,23 @@
 <div class="light-spot light2"></div>
 
 <script>
+  // Función para reproducir el mensaje
+  function reproducirMensaje() {
+    // Reproducir la música con volumen más bajo
+    const audio = document.getElementById('background-audio');
+    audio.volume = 0.5;  // Baja el volumen de la música
+    audio.play();
+
+    // Mensaje de la cumpleañera
+    const mensaje = new SpeechSynthesisUtterance();
+    mensaje.text = "La celebración de mis 15 años será un momento único y especial. Cada sonrisa, cada instante compartido, quedará guardado en mi corazón por siempre. ¡Gracias por ser parte de este día tan maravilloso!";
+    mensaje.lang = 'es-ES';
+    mensaje.volume = 1;  // Mantiene el volumen de la voz al máximo
+    mensaje.rate = 1.1;
+    mensaje.pitch = 1.2;
+    speechSynthesis.speak(mensaje);
+  }
+
   window.onload = () => {
     setTimeout(() => {
       document.querySelector('.cortina.izquierda').style.display = 'none';
