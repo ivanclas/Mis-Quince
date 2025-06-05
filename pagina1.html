@@ -119,9 +119,9 @@
   /* Corazón flotante */
   .corazon {
     position: absolute;
-    bottom: 20px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     width: 60px;
     height: 60px;
     background-color: #ff8c00;
@@ -134,12 +134,13 @@
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 94, 146, 0.5);
     animation: floating 2s ease-in-out infinite;
+    z-index: 20; /* Aseguramos que el corazón esté delante de la imagen */
   }
 
   /* Animación del corazón flotante */
   @keyframes floating {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-10px); }
+    0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+    50% { transform: translate(-50%, -50%) translateY(-10px); }
   }
 
   .corazon:hover {
@@ -158,6 +159,7 @@
     text-align: center;
     opacity: 1;
     transition: opacity 0.3s ease;
+    z-index: 15; /* Asegura que el mensaje también esté en frente */
   }
 
   .mensaje-corazon.hidden {
