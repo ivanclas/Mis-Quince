@@ -218,7 +218,7 @@
     </div>
 
     <!-- Calendario -->
- 
+   
 
     <!-- Ubicación -->
     <div class="icon-wrapper">
@@ -394,6 +394,16 @@
     modalComentario.classList.remove('active');
     commentNameInput.value = '';
     commentTextInput.value = '';
+  });
+
+  // Evitar retroceder al presionar el botón atrás en el dispositivo móvil
+  window.addEventListener("popstate", function(event) {
+    event.preventDefault();  // Prevenir el retroceso de la página
+    if (modalWhatsApp.classList.contains('active')) {
+      modalWhatsApp.classList.remove('active'); // Cerrar el modal WhatsApp
+    } else if (modalComentario.classList.contains('active')) {
+      modalComentario.classList.remove('active'); // Cerrar el modal Comentario
+    }
   });
 </script>
 
