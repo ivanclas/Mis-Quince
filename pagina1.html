@@ -116,6 +116,55 @@
     box-shadow: 0 0 15px rgba(0, 94, 146, 0.3);
   }
 
+  /* Corazón flotante */
+  .corazon {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background-color: #ff8c00;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 94, 146, 0.5);
+    animation: floating 2s ease-in-out infinite;
+  }
+
+  /* Animación del corazón flotante */
+  @keyframes floating {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+  }
+
+  .corazon:hover {
+    background-color: #e07a00;
+  }
+
+  /* Mensaje encima del corazón */
+  .mensaje-corazon {
+    position: absolute;
+    top: 10px;  /* Coloca el mensaje en la parte superior */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .mensaje-corazon.hidden {
+    opacity: 0;
+  }
+
+  /* Botón siguiente */
   .boton-siguiente {
     margin: 20px auto 25px auto;
     padding: 14px 50px;
@@ -174,16 +223,26 @@
   </div>
 </div>
 
+<!-- Corazón flotante para escuchar la música -->
+<div class="corazon" onclick="reproducirMusica()">
+  ❤️
+</div>
+
+<!-- Mensaje encima del corazón -->
+<div class="mensaje-corazon" id="mensajeCorazon">
+  ¡Presiona el corazóncito🎶
+</div>
+
 <button class="boton-siguiente" id="btnSiguiente" aria-label="Ir a la página 2" onclick="irAPagina2()">Siguiente</button>
 
 <script>
-  const btnSiguiente = document.getElementById('btnSiguiente');
-
-  // Asegurarse de que la música solo se reproduzca después de un clic en cualquier parte de la página
-  window.addEventListener('click', () => {
+  // Función para reproducir la música
+  function reproducirMusica() {
     const audio = document.getElementById('background-audio');
-    audio.play(); // Reproducir la música al hacer clic
-  });
+    audio.play();  // Reproducir la música al hacer clic en el corazón
+    document.getElementById('mensajeCorazon').classList.add('hidden');  // Ocultar el mensaje
+    document.querySelector('.corazon').style.display = 'none';  // Ocultar el corazón
+  }
 
   window.onload = () => {
     setTimeout(() => {
@@ -194,7 +253,7 @@
 
     // Mostrar el botón después de 5 segundos
     setTimeout(() => {
-      btnSiguiente.classList.add('visible');
+      document.getElementById('btnSiguiente').classList.add('visible');
     }, 5000); /* Tiempo reducido para mostrar el botón */
   };
 
