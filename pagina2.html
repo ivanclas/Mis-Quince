@@ -210,33 +210,6 @@
 </div>
 
 <script>
-  // Configuración de la voz
-  const voice = new SpeechSynthesisUtterance();
-  voice.lang = 'es-ES'; // Configuración en español
-  voice.volume = 1; // Volumen al máximo
-  voice.rate = 1.1; // Velocidad de la voz
-  voice.pitch = 1.2; // Tonalidad de la voz
-
-  // Función para leer el contenido dinámicamente
-  function leerContenido() {
-    // Leer títulos
-    voice.text = "Mis Padres: German Alvarez Lopez, Domenica Chupillón Villanueva. ";
-    speechSynthesis.speak(voice);
-
-    setTimeout(() => {
-      voice.text = "Mis Padrinos: José Vargas Mondragón, Flor Maldonado Zúñiga. ";
-      speechSynthesis.speak(voice);
-    }, 1500);
-
-    setTimeout(() => {
-      voice.text = "La cita comienza a las 7:00 PM. Asistir con ropa formal. Campo deportivo Sintético Gonzales, A.V. Oriente cuadra 7.";
-      speechSynthesis.speak(voice);
-    }, 3000);
-  }
-
-  // Llamar la función para que lea todo el contenido cuando cargue la página
-  window.onload = leerContenido;
-
   function irAPagina3() {
     window.location.href = 'pagina3.html'; // Cambia esta URL si quieres otro destino
   }
